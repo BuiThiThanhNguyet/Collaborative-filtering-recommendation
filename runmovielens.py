@@ -29,8 +29,6 @@ CPC = cpc_similarity  # method = 4
 RJ = rjaccard_similarity  # method = 2
 RJMSD = rjmsd_similarity  # method = 5
 RJURP = rjurp_similarity  # method = 3
-MNRJ = mnrj_similarity  # method = 5
-MNRJ_THES = mnrj_thes_similarity  # method = 6
 AMSD = amsd_similarity  # method = 5
 SRJ = srj_similarity  # method = 3
 PIP = pip_similarity  # method = 7
