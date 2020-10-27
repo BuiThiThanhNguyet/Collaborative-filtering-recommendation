@@ -77,37 +77,6 @@ def my_jaccard_similarity(common, ids, jds, u, v):
     union_cardinality = len(set.union(*[set(ids), set(jds)]))
     return num / float(union_cardinality)
 
-
-def mnrj_rpb_similarity(common, ids, jds, u, v):
-    mnrj = mnrj_similarity(common, ids, jds, u, v)
-    rpb = rpb_similarity(common, u, v)
-    return mnrj * rpb
-
-
-def mnrj_similarity(common, ids, jds, u, v):
-    intersection_cardinality = len(set.intersection(*[set(ids), set(jds)]))
-    Iu = len(set(ids))
-    Iv = len(set(jds))
-    Iu_bar = Iu - intersection_cardinality
-    Iv_bar = Iv - intersection_cardinality
-    common_u = u[:, common].toarray()[0]
-    common_v = v[:, common].toarray()[0]
-    num = 0
-
-    for i in range(common_u.size):
-        if (common_u[i] >= 3 and common_v[i] >= 3):
-            num += 1
-        elif (common_u[i] < 3 and common_v[i] < 3):
-            num += 1
-    if intersection_cardinality == 0:
-        return 0
-    else:
-        return (1/(1+(1/intersection_cardinality) +
-                   (Iu_bar/(1+Iu_bar))+(1/(1+Iv_bar))+(1/(1+num))))
-
-# mnrj xét thêm thres
-
-
 def jsmcc_similarity(common, ids, jds, u, v):
     jac = jaccard_similarity(ids, jds)
     intersection_cardinality = len(set.intersection(*[set(ids), set(jds)]))
